@@ -1,0 +1,74 @@
+.collapsible {
+  background-color: #eee;
+  cursor: pointer;
+  width: 100%;
+  border: none;
+  text-align: left;
+  background-color: #1E1E1E;
+  color: #EEE;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:20px;
+  margin: 0;
+  font-size: 18px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #3E3E42;
+  transition: .1s;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.chapter {
+  background-color: #2b1808;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 50px;
+  font-size: 16px;
+  color: #EEE;
+}
+
+.chapter:hover {
+  background-color: #544f2b;
+  transition: .1s;
+}
+
+.chapter:active {
+  background-color: #737373;
+  transition: .1s;
+}
+
+.section {
+  background-color: #150c04;
+  cursor: pointer;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left:80px;
+  font-size: 14px;
+  color: #EEE;
+}
+
+.section:hover {
+  background-color: #434023;
+  transition: .1s;
+}
+
+.section:active {
+  background-color: #666666;
+  transition: .1s;
+}
+
+
+body { margin: 0; background-color: #1E1E1E}
+
+div { font-family: "Open Sans", verdana, arial, sans-serif;}
+
