@@ -89,9 +89,9 @@ taxonomy.write(HTMLStartText())
 for subject, chapterSection in subjectChapter.items():
 	taxonomy.write("\t\t<button class=\"collapsible\">" + subject.strip() + "</button>\n\t\t\t<div class=\"content\">\n")
 	for chapter, sectionList in chapterSection.items():
-		taxonomy.write("\t\t\t<div class=\"chapter btn\" data-clipboard-text=\"## DBsubject(" + subject.strip() + ")&#10;## DBchapter(" + chapter.strip() +")&#10;\">" + chapter.strip() + "</div>\n")
+		taxonomy.write("\t\t\t<div class=\"chapter btn\" data-clipboard-text=\"## DBsubject(" + subject.strip() + ")&#10;## DBchapter(" + chapter.strip() +")\">" + chapter.strip() + "</div>\n")
 		for section in sectionList:
-			taxonomy.write("\t\t\t\t<div class=\"section btn\" data-clipboard-text=\"## DBsubject(" + subject.strip() + ")&#10;## DBchapter(" + chapter.strip() +")&#10;## DBsection(" + section.strip() + ")&#10;\">" + section.strip() + "</div>\n")
+			taxonomy.write("\t\t\t\t<div class=\"section btn\" data-clipboard-text=\"## DBsubject(" + subject.strip() + ")&#10;## DBchapter(" + chapter.strip() +")&#10;## DBsection(" + section.strip() + ")\">" + section.strip() + "</div>\n")
 	taxonomy.write("\t\t</div>\n\n")
 
 taxonomy.write(HTMLEndText())
