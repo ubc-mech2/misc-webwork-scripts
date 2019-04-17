@@ -1,0 +1,23 @@
+Organizes WeBWork answer logs and set definition files for further data processing.
+Requires the following files:
+	-answer_log found in the logs folder of a WeBWork course's file manager
+	-all the set definition files of the problem sets of interest. Set definition files are generated when you use WeBWork's 'Export' function under 'Hmwk Sets Editor'. They are also found in the file manager after this is done.
+
+Run the 5 script files in the following order:
+	-SetDefinition.py
+		-creates HWDates.csv and ProblemAttributes.csv
+	-Log2CSV.py
+		-creates WWLogRaw.csv (never use this csv for data processing. It hasn't been cleaned by the next step.)
+	-WWRawDataTrimmer.py
+		-creates AttemptData.csv
+	-AttemptCounter.py
+		-creates AttemptCount.csv
+	-AddSupplementalData.py
+		-modifies AttemptData.csv with additional rows
+
+Some warnings:
+	-Scripts are very poorly optimized, and will take hours to run with large log files (>200,000 rows took around ~10 hours if I remember right).
+	-Script can and will fail without warning
+
+To do:
+	-some actual documentation (soon™)
