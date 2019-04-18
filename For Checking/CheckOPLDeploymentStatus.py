@@ -7,7 +7,7 @@
 #How To Use:
 #If you haven't already, clone the official OPL's repo found here: https://github.com/openwebwork/webwork-open-problem-library
 #Follow instructions listed on ListPGtoCSV.py until 'problems.csv' has been generated.
-#Drop this .py file in the repo's home directory and run the script.
+#Drop this .py file and 'problems.csv' in the repo's home directory and run the script.
 #'problems.csv' should have been updated with their deployment status.
 
 import pandas as pd
