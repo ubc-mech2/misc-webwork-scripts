@@ -16,7 +16,7 @@ import os
 import numpy as np
 
 cwd = os.getcwd()
-filePath = 'UBC\\MECH\\MECH2'
+filePath = 'UBC'
 
 contribPath = os.path.join(cwd,'Contrib\\'+filePath)
 pendingPath = os.path.join(cwd,'Pending\\'+filePath)
