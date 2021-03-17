@@ -98,7 +98,9 @@ function plot3DVectors(vectors, names, colors)
     end
     hold off
 
+    set(gca, 'Projection','perspective');
     ax = gca;
+    ax.DataAspectRatio = [1 1 1];
     ax.XLim = [minNum - 1, maxNum + 1];
     ax.YLim = [minNum - 1, maxNum + 1];
     ax.ZLim = [minNum - 1, maxNum + 1];
@@ -112,6 +114,12 @@ function plot3DVectors(vectors, names, colors)
     ax.YAxis.SecondCrossoverValue = 0;
     ax.ZAxis.FirstCrossoverValue = 0;
     ax.ZAxis.SecondCrossoverValue = 0;
+    ax.XAxis.MinorTick = 'on';
+    ax.XAxis.MinorTickValues = minNum:maxNum;
+    ax.YAxis.MinorTick = 'on';
+    ax.YAxis.MinorTickValues = minNum:maxNum;
+    ax.ZAxis.MinorTick = 'on';
+    ax.ZAxis.MinorTickValues = minNum:maxNum;
 
     mArrow3([minNum - 1, 0, 0], [maxNum + 1, 0, 0], 'stemWidth', maxNum / 250, 'tipWidth', maxNum / 100);
     mArrow3([0, minNum - 1, 0], [0, maxNum + 1, 0], 'stemWidth', maxNum / 250, 'tipWidth', maxNum / 100);
