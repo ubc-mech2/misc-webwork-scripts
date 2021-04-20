@@ -98,7 +98,8 @@ function plot3DVectors(vectors, names, colors)
     end
     hold off
 
-    set(gca, 'Projection','perspective');
+    set(gca, 'Projection','perspective', 'color', 'none');
+    set(gcf, 'color', 'none')
     ax = gca;
     ax.DataAspectRatio = [1 1 1];
     ax.XLim = [minNum - 1, maxNum + 1];
@@ -120,6 +121,7 @@ function plot3DVectors(vectors, names, colors)
     ax.YAxis.MinorTickValues = minNum:maxNum;
     ax.ZAxis.MinorTick = 'on';
     ax.ZAxis.MinorTickValues = minNum:maxNum;
+    ax.FontSize = 8;
 
     mArrow3([minNum - 1, 0, 0], [maxNum + 1, 0, 0], 'stemWidth', maxNum / 250, 'tipWidth', maxNum / 100);
     mArrow3([0, minNum - 1, 0], [0, maxNum + 1, 0], 'stemWidth', maxNum / 250, 'tipWidth', maxNum / 100);
@@ -129,9 +131,14 @@ function plot3DVectors(vectors, names, colors)
     text(0, maxNum + 1.5, 0, 'Y');
     text(0, 0, maxNum + 1.5, 'Z');
 
-    xticks(sort(xTicks));
-    yticks(sort(yTicks));
-    zticks(sort(zTicks));
+    %xticks(sort(xTicks));
+    %yticks(sort(yTicks));
+    %zticks(sort(zTicks));
+    
+    xticks(minNum:maxNum);
+    yticks(minNum:maxNum);
+    zticks(minNum:maxNum);
 
     view(3)
+    camzoom(1.6)
 end
