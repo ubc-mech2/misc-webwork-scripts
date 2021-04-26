@@ -1,13 +1,18 @@
-function plot3DVectors(vectors, names, colors)
+function plot3DVectors(vectors, names, colors, subLines)
 
-    % Plots 3D vectors originating from origin
-    % param: vectors - n x 3 matrix with n 3D vectors to plot
-    %                  (vectors are rows in matrix)
-    %        names   - 1 x n row vector with names for each plotted vector
-    %                  (vector arrow is written on each name)
-    %        colors  - 1 x n row vector with colors for each vector
+    % Renders 3D vectors originating from origin
+    % After rendering, rotate image until satisfactory
+    % Then, save as .png file and add CCBY logo
+    % param: vectors  - n x 3 matrix with n 3D vectors to plot
+    %                   (vectors are rows in matrix)
+    %        names    - 1 x n row vector with names for each plotted vector
+    %                   (vector arrow is written on each name)
+    %        colors   - 1 x n row vector with colors for each vector
+    %        subLines - 1 x n row vector with 'y', to indicate if the
+    %                   vector should have guide lines, or anything else to
+    %                   indicate that there should be no lines
     
-    function plot3DVector(x, y, z, c, n, size)
+    function plot3DVector(x, y, z, c, n, size, subLines)
         name = strcat('$\overrightarrow{', n, '}$');
 
         offset = 0.5;
@@ -18,35 +23,37 @@ function plot3DVectors(vectors, names, colors)
         mArrow3([0, 0, 0], [x, y, z], 'color', c, 'stemWidth', size / 300, 'tipWidth', size / 50);
         text(x, y, z + offset, name, 'Color', c, 'Interpreter', 'latex', 'fontSize', 14);
 
-        xLine1 = line([0, x], [0, 0], [0, 0], 'Color', c);
-        xLine2 = line([0, x], [y, y], [0, 0], 'Color', c);
-        xLine3 = line([0, x], [0, 0], [z, z], 'Color', c);
-        xLine4 = line([0, x], [y, y], [z, z], 'Color', c);
+        if subLines == 'y'
+            xLine1 = line([0, x], [0, 0], [0, 0], 'Color', c);
+            xLine2 = line([0, x], [y, y], [0, 0], 'Color', c);
+            xLine3 = line([0, x], [0, 0], [z, z], 'Color', c);
+            xLine4 = line([0, x], [y, y], [z, z], 'Color', c);
 
-        yLine1 = line([0, 0], [0, y], [0, 0], 'Color', c);
-        yLine2 = line([x, x], [0, y], [0, 0], 'Color', c);
-        yLine3 = line([0, 0], [0, y], [z, z], 'Color', c);
-        yLine4 = line([x, x], [0, y], [z, z], 'Color', c);
+            yLine1 = line([0, 0], [0, y], [0, 0], 'Color', c);
+            yLine2 = line([x, x], [0, y], [0, 0], 'Color', c);
+            yLine3 = line([0, 0], [0, y], [z, z], 'Color', c);
+            yLine4 = line([x, x], [0, y], [z, z], 'Color', c);
 
-        zLine1 = line([0, 0], [0, 0], [0, z], 'Color', c);
-        zLine2 = line([x, x], [0, 0], [0, z], 'Color', c);
-        zLine3 = line([0, 0], [y, y], [0, z], 'Color', c);
-        zLine4 = line([x, x], [y, y], [0, z], 'Color', c);
+            zLine1 = line([0, 0], [0, 0], [0, z], 'Color', c);
+            zLine2 = line([x, x], [0, 0], [0, z], 'Color', c);
+            zLine3 = line([0, 0], [y, y], [0, z], 'Color', c);
+            zLine4 = line([x, x], [y, y], [0, z], 'Color', c);
 
-        xLine1.LineStyle = '--';
-        xLine2.LineStyle = '--';
-        xLine3.LineStyle = '--';
-        xLine4.LineStyle = '--';
+            xLine1.LineStyle = '--';
+            xLine2.LineStyle = '--';
+            xLine3.LineStyle = '--';
+            xLine4.LineStyle = '--';
 
-        yLine1.LineStyle = '--';
-        yLine2.LineStyle = '--';
-        yLine3.LineStyle = '--';
-        yLine4.LineStyle = '--';
+            yLine1.LineStyle = '--';
+            yLine2.LineStyle = '--';
+            yLine3.LineStyle = '--';
+            yLine4.LineStyle = '--';
 
-        zLine1.LineStyle = '--';
-        zLine2.LineStyle = '--';
-        zLine3.LineStyle = '--';
-        zLine4.LineStyle = '--';
+            zLine1.LineStyle = '--';
+            zLine2.LineStyle = '--';
+            zLine3.LineStyle = '--';
+            zLine4.LineStyle = '--';
+        end
     end
 
     numRows = height(vectors);
@@ -93,7 +100,7 @@ function plot3DVectors(vectors, names, colors)
     end
 
     for i = 1:numRows
-        plot3DVector(vectors(i, 1), vectors(i, 2), vectors(i, 3), colors(i), names(i), maxNum);
+        plot3DVector(vectors(i, 1), vectors(i, 2), vectors(i, 3), colors(i), names(i), maxNum, subLines(i));
         hold on
     end
     hold off
