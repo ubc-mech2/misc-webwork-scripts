@@ -13,7 +13,7 @@ import os
 import re
 import shutil
 
-folderName = "newPGs";
+folderName = "newPGs"
 
 #directory for converted files
 if not os.path.exists(folderName): 
@@ -33,7 +33,7 @@ for filename in directory:
 print("{} .pg files found.".format(len(fileList)));
 
 for file in fileList:
-	f = open(file,"r");
+	f = open(file,"r", encoding="utf-8")
 
 	try:
 		content = f.read()
@@ -47,14 +47,18 @@ for file in fileList:
 
 			content = content[:index] + '\n\nTEXT(beginproblem());' + content[index:]
 
-			newPG = open(folderName + "\\" + file, "w");
+			newPG = open(folderName + "\\" + file, "w", encoding='utf-8')
 			newPG.write(content)
 			newPG.close()
+			print('Completed: ', file)
+		else:
+			print('Checked: ', file)
 
 	except Exception as e:
-		print(file, e)
+		newPG.close()	#close file after error so it can be modified
+		print('Failed: ',file,'\n Error: ', e)
 		pass
 
-	f.close();
+	f.close()
 
-input()
+#input()
